@@ -1,0 +1,4 @@
+Values:
+- Simplicity
+- Readability
+- Brevity
