@@ -24,10 +24,10 @@ Run each step in PowerShell.
    code --install-extension ms-vscode-remote.remote-wsl
    ```
 
-4. Get the dotfiles into WSL.
+4. Get the dotfiles into WSL, and link the manifesto for Claude Code.
 
    ```
-   wsl bash -c "git clone https://github.com/howmanyrohan/dotfiles ~/dotfiles && ~/dotfiles/install.sh"
+   wsl bash -c "git clone https://github.com/howmanyrohan/dotfiles ~/dotfiles && mkdir -p ~/.claude && ln -sf ~/dotfiles/MANIFESTO.md ~/.claude/CLAUDE.md"
    ```
 
 5. Copy the VS Code settings.
@@ -53,7 +53,19 @@ Run in a terminal.
 2. Get the dotfiles.
 
    ```
-   git clone https://github.com/howmanyrohan/dotfiles ~/dotfiles && ~/dotfiles/install.sh
+   git clone https://github.com/howmanyrohan/dotfiles ~/dotfiles
+   ```
+
+3. Link the manifesto for Claude Code.
+
+   ```
+   mkdir -p ~/.claude && ln -sf ~/dotfiles/MANIFESTO.md ~/.claude/CLAUDE.md
+   ```
+
+4. Link the VS Code settings.
+
+   ```
+   mkdir -p ~/.config/Code/User && ln -sf ~/dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
    ```
 
 ## What's in here
@@ -61,4 +73,3 @@ Run in a terminal.
 - `MANIFESTO.md`: my values. Linked to `~/.claude/CLAUDE.md` for Claude Code.
 - `vscode/settings.json`: VS Code settings.
 - `vscode/extensions.txt`: VS Code extensions.
-- `install.sh`: links the files above. For Linux and WSL.
