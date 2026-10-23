@@ -67,9 +67,3 @@ Run in a terminal.
    ```
    mkdir -p ~/.config/Code/User && ln -sf ~/dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
    ```
-
-## What's in here
-
-- `MANIFESTO.md`: my values. Linked to `~/.claude/CLAUDE.md` for Claude Code.
-- `vscode/settings.json`: VS Code settings.
-- `vscode/extensions.txt`: VS Code extensions.
