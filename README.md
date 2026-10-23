@@ -1,22 +1,64 @@
 # dotfiles
 
-My setup for Linux (work) and Windows + WSL (home).
+My setup for Windows (with WSL) and Linux.
 
-## Install
+## Windows
 
-Linux or WSL:
+Run each step in PowerShell.
 
-```sh
-./install.sh
-```
+1. Install WSL, then restart.
 
-Windows (PowerShell, with Developer Mode on or as admin):
+   ```
+   wsl --install
+   ```
 
-```powershell
-.\install.ps1
-```
+2. Install VS Code, then close and reopen PowerShell.
 
-## What it does
+   ```
+   winget install Microsoft.VisualStudioCode
+   ```
 
-1. `install.sh`: links `MANIFESTO.md` to `~/.claude/CLAUDE.md`, and VS Code settings on native Linux
-2. `install.ps1`: links VS Code settings, installs extensions from `vscode/extensions.txt`
+3. Install the WSL extension.
+
+   ```
+   code --install-extension ms-vscode-remote.remote-wsl
+   ```
+
+4. Get the dotfiles into WSL.
+
+   ```
+   wsl bash -c "git clone https://github.com/howmanyrohan/dotfiles ~/dotfiles && ~/dotfiles/install.sh"
+   ```
+
+5. Copy the VS Code settings.
+
+   ```
+   New-Item -ItemType Directory -Force $env:APPDATA\Code\User; Copy-Item \\wsl$\Ubuntu\home\$(wsl whoami)\dotfiles\vscode\settings.json $env:APPDATA\Code\User\settings.json
+   ```
+
+6. Test it. VS Code should show `WSL: Ubuntu`.
+
+   ```
+   wsl bash -c "cd ~/dotfiles && code ."
+   ```
+
+   The first time, it installs a helper. Let it finish.
+
+## Linux
+
+Run in a terminal.
+
+1. Install VS Code: https://code.visualstudio.com/download
+
+2. Get the dotfiles.
+
+   ```
+   git clone https://github.com/howmanyrohan/dotfiles ~/dotfiles && ~/dotfiles/install.sh
+   ```
+
+## What's in here
+
+- `MANIFESTO.md`: my values. Linked to `~/.claude/CLAUDE.md` for Claude Code.
+- `vscode/settings.json`: VS Code settings.
+- `vscode/extensions.txt`: VS Code extensions.
+- `install.sh`: links the files above. For Linux and WSL.
