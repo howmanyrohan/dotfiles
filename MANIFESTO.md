@@ -1,4 +1,4 @@
 Values:
 - Simplicity
 - Readability
-- Terseness
+- Indolence
