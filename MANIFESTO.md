@@ -1,5 +1,5 @@
 Values:
 - Simplicity
 - Readability
-- Indolence
+- Brevity
 - Prudence
